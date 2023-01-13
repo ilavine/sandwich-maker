@@ -37,3 +37,5 @@ SandwichIngredients.init(
     modelName: "sandwichingredients",
   }
 );
+
+module.exports = SandwichIngredients;

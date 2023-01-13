@@ -21,3 +21,9 @@ Sandwich.belongsTo(User, {
 Review.belongsTo(User, {
   foreignKey: "user_id",
 });
+
+Ingredients.belongsToMany(Sandwich, { through: SandwichIngredients });
+
+Sandwich.belongsToMany(Ingredients, { through: SandwichIngredients });
+
+module.exports = { User, Ingredients, Sandwich, Review, SandwichIngredients };
