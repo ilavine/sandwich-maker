@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class SandwichIngredients extends Model {}
 
@@ -15,16 +15,16 @@ SandwichIngredients.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "sandwich",
-        key: "id",
+        model: 'sandwich',
+        key: 'id',
       },
     },
     ingredients_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "ingredients",
-        key: "id",
+        model: 'ingredients',
+        key: 'id',
       },
     },
   },
@@ -34,7 +34,7 @@ SandwichIngredients.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "sandwichingredients",
+    modelName: 'sandwichingredients',
   }
 );
 
