@@ -59,4 +59,42 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:id', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ msg: 'Please login first!' });
+  }
+  // Ensure user updating is original author
+  Ingredients.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((updatedIngredients) => {
+      res.json(updatedIngredients);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: 'an error occured', err });
+    });
+});
+
+router.delete('/:id', (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ msg: 'Please login first!' });
+  }
+  // Ensure user deleting is original author
+  Ingredients.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((delIngredients) => {
+      res.json(delIngredients);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: 'an error occured', err });
+    });
+});
+
 module.exports = router;
