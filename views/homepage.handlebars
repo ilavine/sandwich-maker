@@ -1,0 +1,36 @@
+{{! template for the carousel slide }}
+<div
+  id="carousel-container"
+  class="carousel slide"
+  data-ride="carousel"
+  data-interval="5000"
+>
+  <div class="carousel-inner">
+    {{! Slides will be here }}
+    <script id="carousel-slide-template" type="text/x-handlebars-template">
+
+      <div class="carousel-item
+      {{#if isActive}}active{{/if}}"> <img src="{{imageUrl}}" class="d-block
+      w-100" alt="{{caption}}"> <div class="carousel-caption d-none d-md-block">
+      <h5>{{caption}}</h5> </div> </div>
+    </script>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carousel-container"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carousel-container"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

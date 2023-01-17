@@ -1,31 +1,55 @@
 const router = require('express').Router();
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
+const sandiwichHelper = require('../utils/sandwichHelper');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
+    if (req.session.logged_in) {
+      res.redirect('/dashboard');
+    } else {
+    // show the carousel if user is not logged in
+      const sandwichCarousel = await sandiwichHelper;
 
-    const users = userData.map((project) => project.get({ plain: true }));
-
-    res.render('homepage', {
-      users,
-      logged_in: req.session.logged_in,
-    });
+      res.render('homepage', {
+        sandwichCarousel,
+        logged_in: req.session.logged_in
+      });
+    }
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(400).json(err);
   }
 });
 
+// TODO: show the dashboard when user is logged in
+router.get('/dashboard', withAuth, async (req, res) => {
+   try {
+    //TODO: show the dashboard when user is logged in
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+   }
+});
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (!req.session.logged_in) {
+    res.render('signup');
+    return;
+  }
+  res.redirect('/dashboard');
+});
+
 router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
 
+  res.render('login');
   res.render('login');
 });
 

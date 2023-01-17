@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: Happy Monkey;
+
+}
+
+nav {
+  background-color: #FA8072;
+  opacity: 0.1;
+}
+
+.navbar-brand {
+  size: 10px;
+}
