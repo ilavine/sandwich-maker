@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Review extends Model {}
 
@@ -15,16 +15,16 @@ Review.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "user",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
     sandwich_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "sandwich",
-        key: "id",
+        model: 'sandwich',
+        key: 'id',
       },
     },
   },
@@ -33,7 +33,7 @@ Review.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "review",
+    modelName: 'review',
   }
 );
 
