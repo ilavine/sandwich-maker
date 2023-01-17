@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sanwdwich Maker</title>
+    <title>Sandwich Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="public/css/jass.css\" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -35,16 +41,16 @@
         >Logout</button>
       {{else}}
         <h2>Welcome!</h2>
-        <h4>Create An Account to Share Your Favorite Sandwich Recipe</h4>
+        <h4>Create an Account to Share Your Favorite Sandwich Recipe</h4>
         <ul style="list-style: none;">
           <li><a
               href="/signup"
-              class="btn btn-primary btn-lg"
+              class="btn btn-primary btn-lg justify-content-end"
               role="button"
             >Sign Up</a></li>
           <li><a
               href="/login"
-              class="btn btn-outline-primary"
+              class="btn btn-outline-primary justify-content-end"
               role="button"
             >Login</a></li>
         </ul>
@@ -53,7 +59,7 @@
 
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
-      {{!-- {{{body}}} --}}
+      {{{body}}}
     </main>
 
     <footer>
@@ -71,6 +77,13 @@
 
     <!-- Render script for logged in users only -->
     {{#if logged_in}}<script></script>{{/if}}
+
+    {{! jQuery files }}
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
 
   </body>
 
