@@ -34,7 +34,7 @@ const ingredientData = require('./seedData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await Ingredients.bulkCreate(ingredientData, {});
+  await Ingredients.bulkCreate(ingredientData);
 
   process.exit(0);
 };
