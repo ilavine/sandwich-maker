@@ -1,7 +1,8 @@
 const { Review } = require('../../models');
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
     let dbReviewData = await Review.findAll({
@@ -12,15 +13,16 @@ router.get('/', async (req, res) => {
     });
     if (dbReviewData) {
       res.json(dbReviewData);
+    } else {
+      res.status(404).json({ message: 'Did not find those categories' });
     }
-    res.status(404).json({ message: 'Did not find those categories' });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not find those categories' });
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
@@ -35,16 +37,16 @@ router.get('/:id', async (req, res) => {
     });
     if (dbReviewData) {
       res.json(dbReviewData);
+    } else {
+      res.status(404).json({ message: 'Did not find those reviews' });
     }
-
-    res.status(404).json({ message: 'Did not find those reviews' });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not find those reviews' });
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   // create a new category
   try {
     let dbReviewData = await Review.create({
@@ -52,49 +54,49 @@ router.post('/', async (req, res) => {
     });
     if (dbReviewData) {
       res.json(dbReviewData);
+    } else {
+      res.status(404).json({ msg: 'an error occured', err });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ msg: 'an error occured', err });
   }
 });
 
-router.put('/:id', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ msg: 'Please login first!' });
-  }
-  // Ensure user updating is original author
-  Review.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((updatedReview) => {
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    let updatedReview = await Review.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (updatedReview) {
       res.json(updatedReview);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: 'an error occured', err });
-    });
+    } else {
+      res.status(404).json({ msg: 'an error occured', err });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: 'an error occured', err });
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ msg: 'Please login first!' });
-  }
-  // Ensure user deleting is original author
-  Review.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((delReview) => {
-      res.json(delReview);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: 'an error occured', err });
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    let delReview = await Review.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
+    if (delReview) {
+      res.json(delReview);
+    } else {
+      res.status(404).json({ msg: 'an error occured', err });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: 'an error occured', err });
+  }
 });
 
 module.exports = router;
