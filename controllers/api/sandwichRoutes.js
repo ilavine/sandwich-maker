@@ -4,7 +4,7 @@ const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   // find all sandwichesSandwich
   try {
     let dbSandwichData = await Sandwich.findAll({
@@ -16,16 +16,16 @@ router.get('/', async (req, res) => {
 
     if (dbSandwichData) {
       res.json(dbSandwichData);
+    } else {
+      res.status(404).json({ message: 'Did not find those sandwiches :(' });
     }
-
-    res.status(404).json({ message: 'Did not find those sandwiches :(' });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not find those sandwiches :(' });
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   // find one sandwich by its `id` value
   // be sure to include its associated Products
   try {
@@ -41,16 +41,16 @@ router.get('/:id', async (req, res) => {
 
     if (dbSandwichData) {
       res.json(dbSandwichData);
+    } else {
+      res.status(404).json({ message: 'Did not find those sandwiches :(' });
     }
-
-    res.status(404).json({ message: 'Did not find those sandwiches :(' });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not find those sandwiches :(' });
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   // create a new sandwich
   try {
     let dbSandwichData = await Sandwich.create({
@@ -59,50 +59,52 @@ router.post('/', async (req, res) => {
 
     if (dbSandwichData) {
       res.json(dbSandwichData);
+    } else {
+      res.status(404).json({ message: 'an error occured' });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'an error occured' });
   }
 });
 
 // update sandwich - withAuth fx
-router.put('/:id', withAuth, (req, res) => {
-  console.log(req.body, req.params.id);
-  Sandwich.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((affectedRows) => {
-      if (affectedRows > 0) {
-        res.status(200).end();
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch((err) => {
-      res.status(500).json(err);
+router.put('/:id', withAuth, async (req, res) => {
+  // console.log(req.body, req.params.id);
+  try {
+    let updatedSandwich = await Sandwich.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
     });
+    if (updatedSandwich) {
+      res.json(updatedSandwich);
+    } else {
+      res.status(404).json({ msg: 'an error occured', err });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: 'an error occured', err });
+  }
 });
 
-router.delete('/:id', withAuth, (req, res) => {
-  console.log(req.body, req.params.id);
-  Sandwich.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((affectedRows) => {
-      if (affectedRows > 0) {
-        res.status(200).end();
-      } else {
-        res.status(404).end();
-      }
-    })
-    .catch((err) => {
-      res.status(500).json(err);
+router.delete('/:id', withAuth, async (req, res) => {
+  //console.log(req.body, req.params.id);
+  try {
+    let delSandwich = await Sandwich.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
+    if (delSandwich) {
+      res.json(delSandwich);
+    } else {
+      res.status(404).json({ msg: 'an error occured', err });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: 'an error occured', err });
+  }
 });
 
 module.exports = router;
