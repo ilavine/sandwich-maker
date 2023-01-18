@@ -23,18 +23,26 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">🥪 Sandwich Maker</a>
-      <ul class="nav justify-content-end">
+      {{#if logged_in}}
+      <ul class="nav justify-content-end"></ul>
+        <h2> {{name}}</h2>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="/logout">Logout</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
-        </li>
-      </ul>
+      {{else}}
+        <ul class="nav nav-pills justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+        </ul>
     </nav>
+    {{/if}}
     <section class="greeting">
       {{#if logged_in}}
-        <h2>Welcome, {{name}}! <i class="nes-ash small"></i></h2>
+        <h2>Welcome, {{name}}! </h2>
         <button
           class="no-button justify-content-center text-centered"
           id="logout"
