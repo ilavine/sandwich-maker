@@ -1,6 +1,8 @@
 const { Sandwich } = require('../../models');
 const router = require('express').Router();
-const withAuth = require('../utils/auth');
+
+const withAuth = require('../../utils/auth');
+
 
 router.get('/', async (req, res) => {
   // find all sandwichesSandwich
