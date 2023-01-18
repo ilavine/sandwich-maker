@@ -1,0 +1,102 @@
+[
+  {
+    "category_id": 4,
+    "name": "White bread"
+  },
+  {
+    "category_id": 4,
+    "name": "Wheat bread"
+  },
+  {
+    "category_id": 4,
+    "name": "Rye bread"
+  },
+  {
+    "category_id": 4,
+    "name": "Sourdough bread"
+  },
+  {
+    "category_id": 4,
+    "name": "Baguette"
+  },
+  {
+    "category_id": 1,
+    "name": "Ham"
+  },
+  {
+    "category_id": 1,
+    "name": "Turkey"
+  },
+  {
+    "category_id": 1,
+    "name": "Roast beef"
+  },
+  {
+    "category_id": 1,
+    "name": "Salami"
+  },
+  {
+    "category_id": 1,
+    "name": "Prosciutto"
+  },
+  {
+    "category_id": 2,
+    "name": "Cheddar"
+  },
+  {
+    "category_id": 2,
+    "name": "Swiss"
+  },
+  {
+    "category_id": 2,
+    "name": "Mozzarella"
+  },
+  {
+    "category_id": 2,
+    "name": "American"
+  },
+  {
+    "category_id": 2,
+    "name": "Provolone"
+  },
+  {
+    "category_id": 3,
+    "name": "Lettuce"
+  },
+  {
+    "category_id": 3,
+    "name": "Tomato"
+  },
+  {
+    "category_id": 3,
+    "name": "Cucumber"
+  },
+  {
+    "category_id": 3,
+    "name": "Onion"
+  },
+  {
+    "category_id": 3,
+    "name": "Pickles"
+  },
+  {
+    "category_id": 5,
+    "name": "Mayonnaise"
+  },
+  {
+    "category_id": 5,
+    "name": "Mustard"
+  },
+  {
+    "category_id": 5,
+    "name": "Ketchup"
+  },
+  {
+    "category_id": 5,
+    "name": "Hot sauce"
+  },
+  {
+    "category_id": 5,
+    "name": "Barbecue sauce"
+  }
+]

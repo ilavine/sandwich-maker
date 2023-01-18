@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
-// const reviewRoutes = require('./reviewRoutes');
+const reviewRoutes = require('./reviewRoutes');
 const ingredientRoutes = require('./ingredientRoutes');
 const sandwichRoutes = require('./sandwichRoutes');
 
