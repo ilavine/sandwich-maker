@@ -10,5 +10,3 @@ router.use('/ingredient', ingredientRoutes);
 router.use('/sandwich', sandwichRoutes);
 
 module.exports = router;
-
-module.exports = router;

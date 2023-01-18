@@ -1,32 +1,33 @@
 const { Ingredients } = require('../../models');
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
-    await Ingredients.findAll({
+    let dbIngredientData = await Ingredients.findAll({
       include: {
         model: Product,
         attributes: ['id', 'name'],
       },
-    }).then((dbIngredientData) => {
-      if (!dbIngredientData) {
-        res.status(404).json({ message: 'Did not find those categories' });
-        return;
-      }
-      res.json(dbIngredientData);
     });
+
+    if (dbIngredientData) {
+      res.json(dbIngredientData);
+    }
+
+    res.status(404).json({ message: 'Did not find those categories' });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not find those categories' });
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    await Ingredients.findOne({
+    let dbIngredientData = await Ingredients.findOne({
       where: {
         id: req.params.id,
       },
@@ -34,67 +35,72 @@ router.get('/:id', async (req, res) => {
         model: Product,
         attributes: ['id', 'name'],
       },
-    }).then((dbIngredientData) => {
-      if (!dbIngredientData) {
-        res.status(404).json({ message: 'Did not find those items' });
-        return;
-      }
-      res.json(dbIngredientData);
     });
+
+    if (dbIngredientData) {
+      res.json(dbIngredientData);
+    } else {
+      res.status(404).json({ message: 'Did not find those items' });
+    }
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not find those items' });
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   // create a new category
   try {
-    await Ingredients.create({
+    let dbIngredientData = await Ingredients.create({
       name: req.body.name,
-    }).then((dbIngredientData) => res.json(dbIngredientData));
+    });
+
+    if (dbIngredientData) {
+      res.json(dbIngredientData);
+    } else {
+      res.status(404).json({ message: 'Did not add ingredient' });
+    }
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Did not add ingredient' });
   }
 });
 
-router.put('/:id', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ msg: 'Please login first!' });
-  }
-  // Ensure user updating is original author
-  Ingredients.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((updatedIngredients) => {
+router.put('/:id', withAuth, async (req, res) => {
+  //update category
+  try {
+    let updatedIngredients = await Ingredients.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (updatedIngredients) {
       res.json(updatedIngredients);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: 'an error occured', err });
-    });
+    } else {
+      res.status(404).json({ message: 'an error occured' });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'an error occured', err });
+  }
 });
 
-router.delete('/:id', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ msg: 'Please login first!' });
-  }
-  // Ensure user deleting is original author
-  Ingredients.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((delIngredients) => {
-      res.json(delIngredients);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: 'an error occured', err });
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    let delIngredients = await Ingredients.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
+    if (delIngredients) {
+      res.json(delIngredients);
+    } else {
+      res.status(404).json({ message: 'an error occured' });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: 'an error occured', err });
+  }
 });
 
 module.exports = router;

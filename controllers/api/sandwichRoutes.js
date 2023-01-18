@@ -1,22 +1,24 @@
 const { Sandwich } = require('../../models');
 const router = require('express').Router();
+
 const withAuth = require('../../utils/auth');
+
 
 router.get('/', async (req, res) => {
   // find all sandwichesSandwich
   try {
-    await Sandwich.findAll({
+    let dbSandwichData = await Sandwich.findAll({
       include: {
         model: Product,
         attributes: ['id', 'name'],
       },
-    }).then((dbSandwichData) => {
-      if (!dbSandwichData) {
-        res.status(404).json({ message: 'Did not find those sandwiches :(' });
-        return;
-      }
-      res.json(dbSandwichData);
     });
+
+    if (dbSandwichData) {
+      res.json(dbSandwichData);
+    }
+
+    res.status(404).json({ message: 'Did not find those sandwiches :(' });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -27,7 +29,7 @@ router.get('/:id', async (req, res) => {
   // find one sandwich by its `id` value
   // be sure to include its associated Products
   try {
-    await Sandwich.findOne({
+    let dbSandwichData = await Sandwich.findOne({
       where: {
         id: req.params.id,
       },
@@ -35,13 +37,13 @@ router.get('/:id', async (req, res) => {
         model: Product,
         attributes: ['id', 'name'],
       },
-    }).then((dbSandwichData) => {
-      if (!dbSandwichData) {
-        res.status(404).json({ message: 'Did not find that sandwich' });
-        return;
-      }
-      res.json(dbSandwichData);
     });
+
+    if (dbSandwichData) {
+      res.json(dbSandwichData);
+    }
+
+    res.status(404).json({ message: 'Did not find those sandwiches :(' });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -51,9 +53,13 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new sandwich
   try {
-    await Sandwich.create({
+    let dbSandwichData = await Sandwich.create({
       name: req.body.name,
-    }).then((dbSandwichData) => res.json(dbSandwichData));
+    });
+
+    if (dbSandwichData) {
+      res.json(dbSandwichData);
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

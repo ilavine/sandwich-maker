@@ -6,8 +6,10 @@ const ingredientData = require('./ingredientData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
+
   await Category.bulkCreate(categoryData, {});
   await Ingredients.bulkCreate(ingredientData, {});
+
 
   process.exit(0);
 };
