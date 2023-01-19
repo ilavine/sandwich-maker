@@ -1,0 +1,22 @@
+[
+    {
+        "name": "turkey sammich",
+        "sandwich_id": 2
+    },
+    {
+        "name": "ham sammich",
+        "sandwich_id": 3
+    },
+    {
+        "name": "bologna sammich",
+        "sandwich_id": 1
+    },
+    {
+        "name": "chicken salad sammich",
+        "sandwich_id": 5
+    },
+    {
+        "name": "BLT",
+        "sandwich_id": 4
+    }
+]

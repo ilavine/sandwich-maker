@@ -6,20 +6,20 @@ router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
     let dbIngredientData = await Ingredients.findAll({
-      include: {
-        model: Product,
-        attributes: ['id', 'name'],
-      },
+      // include: {
+      //   model: Ingredients,
+      //   attributes: ['id', 'name', 'category_id'],
+      // },
     });
-
-    if (dbIngredientData) {
-      res.json(dbIngredientData);
+    console.log(dbIngredientData);
+    if (!dbIngredientData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
+    } else {
+      return res.json(dbIngredientData);
     }
-
-    res.status(404).json({ message: 'Did not find those categories' });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: 'Did not find those categories' });
+    res.status(500).json({ message: 'Did not find those ingredients' });
   }
 });
 
@@ -31,16 +31,16 @@ router.get('/:id', withAuth, async (req, res) => {
       where: {
         id: req.params.id,
       },
-      include: {
-        model: Product,
-        attributes: ['id', 'name'],
-      },
+      // include: {
+      //   model: Ingredients,
+      //   attributes: ['id', 'name', 'category_name'],
+      // },
     });
 
-    if (dbIngredientData) {
-      res.json(dbIngredientData);
+    if (!dbIngredientData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'Did not find those items' });
+      return res.json(dbIngredientData);
     }
   } catch (err) {
     console.log(err);
@@ -49,16 +49,17 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-  // create a new category
+  // create a new ingredient
   try {
     let dbIngredientData = await Ingredients.create({
       name: req.body.name,
+      category_id: req.body.category_id,
     });
 
-    if (dbIngredientData) {
-      res.json(dbIngredientData);
+    if (!dbIngredientData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'Did not add ingredient' });
+      return res.json(dbIngredientData);
     }
   } catch (err) {
     console.log(err);
@@ -74,10 +75,10 @@ router.put('/:id', withAuth, async (req, res) => {
         id: req.params.id,
       },
     });
-    if (updatedIngredients) {
-      res.json(updatedIngredients);
+    if (!updatedIngredients) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'an error occured' });
+      return res.json(updatedIngredients);
     }
   } catch (err) {
     console.log(err);
@@ -92,10 +93,10 @@ router.delete('/:id', withAuth, async (req, res) => {
         id: req.params.id,
       },
     });
-    if (delIngredients) {
-      res.json(delIngredients);
+    if (!delIngredients) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'an error occured' });
+      return res.json(delIngredients);
     }
   } catch (err) {
     console.log(err);

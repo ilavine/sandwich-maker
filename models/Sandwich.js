@@ -15,6 +15,10 @@ Sandwich.init(
       type: DataTypes.STRING,
       allowNulll: false,
     },
+    sandwich_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,

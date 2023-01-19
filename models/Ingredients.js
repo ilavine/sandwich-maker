@@ -13,7 +13,7 @@ Ingredients.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNulll: false,
+      allowNull: false,
     },
     category_id: {
       type: DataTypes.INTEGER,

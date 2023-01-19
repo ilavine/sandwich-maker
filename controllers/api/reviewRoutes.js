@@ -1,4 +1,4 @@
-const { Review } = require('../../models');
+const { Review, User, Sandwich } = require('../../models');
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 
@@ -6,15 +6,15 @@ router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
     let dbReviewData = await Review.findAll({
-      include: {
-        model: Product,
-        attributes: ['id', 'name'],
-      },
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
-    if (dbReviewData) {
-      res.json(dbReviewData);
+    if (!dbReviewData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'Did not find those categories' });
+      return res.json(dbReviewData);
     }
   } catch (err) {
     console.log(err);
@@ -30,15 +30,15 @@ router.get('/:id', withAuth, async (req, res) => {
       where: {
         id: req.params.id,
       },
-      include: {
-        model: Product,
-        attributes: ['id', 'name'],
-      },
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
-    if (dbReviewData) {
-      res.json(dbReviewData);
+    if (!dbReviewData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'Did not find those reviews' });
+      return res.json(dbReviewData);
     }
   } catch (err) {
     console.log(err);
@@ -46,16 +46,18 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
-router.post('/', withAuth, async (req, res) => {
-  // create a new category
+router.post('/', async (req, res) => {
+  // create a new review
   try {
     let dbReviewData = await Review.create({
-      name: req.body.name,
+      user_id: req.body.user_id,
+      sandwich_id: req.body.sandwich_id,
+      include: [User, Sandwich],
     });
-    if (dbReviewData) {
-      res.json(dbReviewData);
+    if (!dbReviewData) {
+      return res.status(404).json({ message: 'Could not add those reviews' });
     } else {
-      res.status(404).json({ msg: 'an error occured', err });
+      return res.json(dbReviewData);
     }
   } catch (err) {
     console.log(err);

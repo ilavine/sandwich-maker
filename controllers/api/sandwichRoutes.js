@@ -3,21 +3,20 @@ const router = require('express').Router();
 
 const withAuth = require('../../utils/auth');
 
-
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   // find all sandwichesSandwich
   try {
     let dbSandwichData = await Sandwich.findAll({
-      include: {
-        model: Product,
-        attributes: ['id', 'name'],
-      },
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
 
-    if (dbSandwichData) {
-      res.json(dbSandwichData);
+    if (!dbSandwichData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'Did not find those sandwiches :(' });
+      return res.json(dbSandwichData);
     }
   } catch (err) {
     console.log(err);
@@ -33,16 +32,16 @@ router.get('/:id', withAuth, async (req, res) => {
       where: {
         id: req.params.id,
       },
-      include: {
-        model: Product,
-        attributes: ['id', 'name'],
-      },
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
 
-    if (dbSandwichData) {
-      res.json(dbSandwichData);
+    if (!dbSandwichData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'Did not find those sandwiches :(' });
+      return res.json(dbSandwichData);
     }
   } catch (err) {
     console.log(err);
@@ -55,12 +54,13 @@ router.post('/', withAuth, async (req, res) => {
   try {
     let dbSandwichData = await Sandwich.create({
       name: req.body.name,
+      sandwich_id: req.body.sandwich_id,
     });
 
-    if (dbSandwichData) {
-      res.json(dbSandwichData);
+    if (!dbSandwichData) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ message: 'an error occured' });
+      return res.json(dbSandwichData);
     }
   } catch (err) {
     console.log(err);
@@ -77,10 +77,10 @@ router.put('/:id', withAuth, async (req, res) => {
         id: req.params.id,
       },
     });
-    if (updatedSandwich) {
-      res.json(updatedSandwich);
+    if (!updatedSandwich) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ msg: 'an error occured', err });
+      return res.json(updatedSandwich);
     }
   } catch (err) {
     console.log(err);
@@ -96,10 +96,10 @@ router.delete('/:id', withAuth, async (req, res) => {
         id: req.params.id,
       },
     });
-    if (delSandwich) {
-      res.json(delSandwich);
+    if (!delSandwich) {
+      return res.status(404).json({ message: 'Did not find those categories' });
     } else {
-      res.status(404).json({ msg: 'an error occured', err });
+      return res.json(delSandwich);
     }
   } catch (err) {
     console.log(err);
