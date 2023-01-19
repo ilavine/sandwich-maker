@@ -27,6 +27,10 @@ Review.init(
         key: 'id',
       },
     },
+    review_text: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
