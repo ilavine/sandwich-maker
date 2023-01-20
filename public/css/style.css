@@ -31,4 +31,14 @@ section {
   background-color: #008AA5;
 }
 
+h2, h4 {
+  color: whitesmoke;
+
+}
+
+#signup-btn  {
+  color: whitesmoke;
+  background-color:#008AA5;
+}
+
 
