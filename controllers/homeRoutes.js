@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Sandwich, Ingredients } = require('../models');
+const { Sandwich, Ingredients, Category } = require('../models');
 const withAuth = require('../utils/auth');
 const sandiwichHelper = require('../utils/sandwichHelper');
 
@@ -34,11 +34,16 @@ router.get('/dashboard', withAuth, async (req, res) => {
             attributes: ['id', 'name'],
           },
         })) || [];
-      console.log();
+      const sandwiches = dbSandwichData.map((sandwiches) =>
+        sandwiches.get({ plain: true })
+      );
+
+      // console.log(dbSandwichData);
       res.render('dashboard', {
         logged_in: req.session.logged_in,
-        data: dbSandwichData,
+        data: sandwiches,
       });
+      // res.json(dbSandwichData);
     }
   } catch (err) {
     console.log(err);
@@ -74,6 +79,19 @@ router.get('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+router.get('/sandwich', async (req, res) => {
+  // if((req.session.logged_in))
+  const categoryData = await Category.findAll({
+    include: {
+      model: Ingredients,
+    },
+  });
+  const categories = categoryData.map((category) =>
+    category.get({ plain: true })
+  );
+  res.render('sandwich', { categories });
 });
 
 module.exports = router;
