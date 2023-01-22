@@ -32,7 +32,7 @@
         <a class="navbar-brand" href="#">🥪 Sandwich Maker</a>
         {{#if logged_in}}
         <ul class="nav justify-content-end"></ul>
-          <h2> {{name}}</h2>
+          <h2> Welcome, {{name}}</h2>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
@@ -56,10 +56,9 @@
 
     <section class="greeting">
       {{#if logged_in}}
-        <h2>Welcome, {{name}}! </h2>
         <button
           class="no-button justify-content-center text-centered mb-3"
-          id="logout" href="/logout">Logout</button>
+          id="create">Create a Sandwich</button>
       {{else}}
         <h2>Welcome!</h2>
         <h4>Create an Account to Share Your Favorite Sandwich Recipe</h4>
@@ -79,9 +78,9 @@
       {{/if}}
     </section>
 
-    <footer >
-      <div class="container align-center>
-        <span class="text-muted">Group 4</span>
+    <footer>
+      <div class="footer">
+        <h4>Group 4</h4>
       </div>
     </footer>
 

@@ -8,7 +8,7 @@ body {
  
 }
 
-section, footer {
+section {
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -32,8 +32,19 @@ section, footer {
 }
 
 h2, h4 {
-  color: whitesmoke;
+  color: #008AA5;
 
+}
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: whitesmoke;
+  color: #008AA5;
+  text-align: center;
 }
 
 #signup-btn  {
@@ -52,5 +63,5 @@ h2, h4 {
 
 .slick-prev:before,
 .slick-next:before {
-      color: black;
+      color: #008AA5;
   }
