@@ -30,15 +30,12 @@ section {
   background-color: #008aa5;
 }
 
-h2,
-h4 {
-  color: whitesmoke;
 h2, h4 {
   color: #008AA5;
 
 }
 
-.footer {
+footer {
   position: relative;
   left: 0;
   bottom: 0;
