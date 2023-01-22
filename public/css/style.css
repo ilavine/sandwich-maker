@@ -8,7 +8,7 @@ body {
  
 }
 
-section {
+section, footer {
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -41,4 +41,16 @@ h2, h4 {
   background-color:#008AA5;
 }
 
+.slideshow {
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+}
 
+.slide img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+      color: black;
+  }
