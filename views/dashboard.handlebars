@@ -1,27 +1,23 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-12 d-flex flex-wrap justify-content-around'>
-      {{!-- {{each}} --}}
-      <div class='card mb-5' style='width: 18rem;'>
-        <div class='card-header'>
-          {{!-- <img src={{}} class="card-img-top" alt="{{}}"> --}}
-          <a class='card-title'>Title</a>
-        </div>
-        {{data}}
-        <div class='card-body'>
-          <ul class='list-group list-group-flush'>
-            <li class='list-group-item'>Name: </li>
-            <li class='list-group-item'>Ingredients: </li>
-            <li class='list-group-item'>Rating:</li>
-          </ul>
-          <div class='d-grid gap-2 d-md-block'>
-            <button class='btn btn-primary' type='button'>Like</button>
-            <button class='btn btn-primary' type='button'>Review</button>
-          </div>
-        </div>
+<div class='col-12 d-flex flex-wrap justify-content-around'>
+  {{!-- {{each}} --}}
+  <div class='card mb-5' style='width: 18rem;'>
+    <div class='card-header'>
+      <img src="" class="card-img-top" alt="">
+      <a class='card-title'>Title</a>
+    </div>
+    {{data}}
+    <div class='card-body'>
+      <ul class='list-group list-group-flush'>
+        <li class='list-group-item'>Name: </li>
+        <li class='list-group-item'>Ingredients: </li>
+        <li class='list-group-item'>Rating:</li>
+      </ul>
+      <div class='d-grid gap-2 d-md-block'>
+        <button class='btn btn-primary' type='button'>Like</button>
+        <button class='btn btn-primary' type='button'>Review</button>
       </div>
-      {{!-- {{/each}} --}}
-
     </div>
   </div>
+  {{!-- {{/each}} --}}
+
 </div>

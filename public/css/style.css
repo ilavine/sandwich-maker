@@ -7,7 +7,8 @@ body {
   background-color: #ffa384;
 }
 
-section {
+section,
+.row {
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -32,20 +33,16 @@ section {
 
 h2,
 h4 {
-  color: whitesmoke;
-h2, h4 {
-  color: #008AA5;
-
+  color: #008aa5;
 }
 
-.footer {
-  position: relative;
+footer {
+  position: realtive;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 60px;
   background-color: whitesmoke;
-  color: #008AA5;
+  color: #008aa5;
   text-align: center;
 }
 
@@ -55,6 +52,10 @@ h2, h4 {
 }
 
 .slideshow {
+  display: flex;
+  justify-content: center;
+  max-width: 60%;
+  height: fit-content;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -65,5 +66,5 @@ h2, h4 {
 
 .slick-prev:before,
 .slick-next:before {
-      color: #008AA5;
-  }
+  color: #008aa5;
+}
