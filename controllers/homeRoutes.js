@@ -26,6 +26,12 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     //TODO: show the dashboard when user is logged in
+    if (req.session.logged_in) {
+      res.render('dashboard', {
+        logged_in: req.session.logged_in,
+      });
+      return;
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -49,6 +55,17 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.redirect('/');
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 module.exports = router;
