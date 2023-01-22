@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { User } = require('../models');
+const { Sandwich, Ingredients } = require('../models');
 const withAuth = require('../utils/auth');
 const sandiwichHelper = require('../utils/sandwichHelper');
 
@@ -27,10 +27,18 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     //TODO: show the dashboard when user is logged in
     if (req.session.logged_in) {
+      const dbSandwichData =
+        (await Sandwich.findAll({
+          include: {
+            model: Ingredients,
+            attributes: ['id', 'name'],
+          },
+        })) || [];
+      console.log();
       res.render('dashboard', {
         logged_in: req.session.logged_in,
+        data: dbSandwichData,
       });
-      return;
     }
   } catch (err) {
     console.log(err);
