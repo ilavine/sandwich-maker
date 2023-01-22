@@ -1,0 +1,42 @@
+[
+    {
+        "sandwich_id": 1,
+        "ingredient_id": 1
+    },
+    {
+        "sandwich_id": 1,
+        "ingredient_id": 2
+    },
+    {
+        "sandwich_id": 1,
+        "ingredient_id": 3
+    },
+    {
+        "sandwich_id": 1,
+        "ingredient_id": 4
+    },
+    {
+        "sandwich_id": 1,
+        "ingredient_id": 5
+    },
+    {
+        "sandwich_id": 2,
+        "ingredient_id": 1
+    },
+    {
+        "sandwich_id": 2,
+        "ingredient_id": 2
+    },
+    {
+        "sandwich_id": 2,
+        "ingredient_id": 3
+    },
+    {
+        "sandwich_id": 2,
+        "ingredient_id": 4
+    },
+    {
+        "sandwich_id": 2,
+        "ingredient_id": 5
+    }
+]

@@ -1,4 +1,4 @@
-<div class= "container">
+{{!-- <div class= "container">
   <form action="#">
   <div class="form-group">
     <label for="bread">Bread</label><br>
@@ -26,9 +26,9 @@
     </select>
   </div>
 </form>
-</div>
+</div> --}}
 
-<div class= "container">
+{{!-- <div class= "container">
   <form action="#">
   <div class="form-group">
     <label for="cheese">Cheese</label><br>
@@ -56,4 +56,12 @@
     </select>
   </div>
 </form>
-</div>
+</div> --}}
+something and stuff
+{{#each categories as |category|}}
+  <select>
+    {{#each category.ingredients as |ingredient|}}
+      <option>{{ingredient.name}}</option>
+    {{/each}}
+  </select>
+{{/each}}
