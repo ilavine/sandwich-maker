@@ -4,8 +4,7 @@
 
 body {
   font-family: Happy Monkey;
-  background-color: #FFA384;
- 
+  background-color: #ffa384;
 }
 
 section {
@@ -24,13 +23,16 @@ section {
 .navbar-brand {
   font-size: 40px;
   font-weight: bolder;
-  color: #008AA5;
+  color: #008aa5;
 }
 
 .nav-link {
-  background-color: #008AA5;
+  background-color: #008aa5;
 }
 
+h2,
+h4 {
+  color: whitesmoke;
 h2, h4 {
   color: #008AA5;
 
@@ -47,9 +49,9 @@ h2, h4 {
   text-align: center;
 }
 
-#signup-btn  {
+#signup-btn {
   color: whitesmoke;
-  background-color:#008AA5;
+  background-color: #008aa5;
 }
 
 .slideshow {
