@@ -41,6 +41,12 @@ footer {
 .btn {
   color: whitesmoke;
   background-color: #008aa5;
+  margin: 2px;
+}
+
+.btn-dashboard {
+  width: 70px;
+  height: 40px;
 }
 
 .slideshow {
