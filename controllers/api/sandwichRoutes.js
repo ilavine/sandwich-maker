@@ -1,4 +1,4 @@
-const { Sandwich, Ingredients } = require('../../models');
+const { Sandwich, Ingredients, SandwichIngredients } = require('../../models');
 const router = require('express').Router();
 
 const withAuth = require('../../utils/auth');
@@ -53,10 +53,29 @@ router.post('/', withAuth, async (req, res) => {
   // create a new sandwich
   try {
     let dbSandwichData = await Sandwich.create({
-      name: req.body.name,
-      sandwich_id: req.body.sandwich_id,
+      user_id: req.session.user_id,
+      name: req.body.id,
     });
-
+    await SandwichIngredients.create({
+      sandwich_id: dbSandwichData.id,
+      ingredient_id: req.body.valueOne,
+    });
+    await SandwichIngredients.create({
+      sandwich_id: dbSandwichData.id,
+      ingredient_id: req.body.valueTwo,
+    });
+    await SandwichIngredients.create({
+      sandwich_id: dbSandwichData.id,
+      ingredient_id: req.body.valueThree,
+    });
+    await SandwichIngredients.create({
+      sandwich_id: dbSandwichData.id,
+      ingredient_id: req.body.valueFour,
+    });
+    await SandwichIngredients.create({
+      sandwich_id: dbSandwichData.id,
+      ingredient_id: req.body.valueFive,
+    });
     if (!dbSandwichData) {
       return res.status(404).json({ message: 'Did not find those categories' });
     } else {
