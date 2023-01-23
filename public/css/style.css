@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -7,12 +9,20 @@ body {
   background-color: #ffa384;
 }
 
-section {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
+section,
+.row {
+  margin: 20px;
   align-items: center;
   justify-content: center;
+}
+
+
+
+#logged {
+  display: block;
+  position: relative;
+  top: 170;
+  background-color: wheat;
 }
 
 .navbar {
@@ -26,32 +36,34 @@ section {
   color: #008aa5;
 }
 
-.nav-link {
-  background-color: #008aa5;
-}
-
-h2, h4 {
-  color: #008AA5;
-
+h1,
+h2,
+h4 {
+  color: #008aa5;
 }
 
 footer {
-  position: relative;
-  left: 0;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  margin-top: 40px;
   width: 100%;
-  height: 60px;
   background-color: whitesmoke;
-  color: #008AA5;
-  text-align: center;
+  color: #008aa5;
 }
 
-#signup-btn {
+.btn {
   color: whitesmoke;
   background-color: #008aa5;
 }
 
 .slideshow {
+  display: flex;
+  justify-content: center;
+  max-width: 60%;
+  height: fit-content;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -62,5 +74,5 @@ footer {
 
 .slick-prev:before,
 .slick-next:before {
-      color: #008AA5;
-  }
+  color: #008aa5;
+}
