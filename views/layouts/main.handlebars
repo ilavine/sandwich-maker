@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="/">🥪 Sandwich Maker</a>
         {{#if logged_in}}
-        <ul class="nav justify-content-end"></ul>
+        <ul class="nav justify-content-start"></ul>
           <h2> Welcome, {{name}}</h2>
           <ul style="list-style: none;">
             <li class="nav-item">
@@ -52,17 +52,26 @@
     </nav>
     {{/if}}
 
-
-
+    <main class="container container-fluid">
+      <div class="row justify-content-center">
+        <!-- Render the sub layout -->
+        {{{body}}}
+      </div>
+    </main>
    
-    <section class="greeting">
+    <section class="py-5 text-center container">
        {{#if logged_in}}
-        <div class="px-4 py-5 my-5 text-center">
-          <h1 class="display-5 fw-bold">Sandwich Dashboard</h1>
-          <div class="col-lg-6 mx-auto">
+        <div id="logged" class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Sandwich Dashboard</h1>
             <p class="lead mb-4">Share your sandwich recipe with others.</p>
+          </div>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Create your Sandwich</button>
+              <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/sandwich">Create Your Sandwich</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -84,15 +93,8 @@
         </ul>
          {{/if}}
     </section>
-
-    <main class="container container-fluid mt-5">
-      <div class="row justify-content-center">
-        <!-- Render the sub layout -->
-        {{{body}}}
-      </div>
-    </main>
    
-    <footer class="py-3 my-4">
+    <footer>
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i class="fa-brands fa-github"></i></a></li>
         </ul>
