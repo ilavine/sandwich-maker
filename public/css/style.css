@@ -60,6 +60,10 @@ footer {
   max-width: 100%;
 }
 
+#sandwich {
+  width: 50%;
+}
+
 .slide img {
   max-width: 100%;
   width: 100%;
