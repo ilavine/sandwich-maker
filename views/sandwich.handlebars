@@ -1,5 +1,8 @@
 <div class="row" id="sandwich">
     <h2 class="px-4 pt-5 my-5 text-center"> Choose five ingredients to make your own sandwich with!</h2>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Sandwich name" aria-label="Username" aria-describedby="basic-addon1">
+   </div>  
     {{#each categories as |category|}}
       <select>
         {{#each category.ingredients as |ingredient|}}
@@ -8,4 +11,5 @@
       </select>
     {{/each}}
     <button type="button" (click)="onChangeType()" class="btn btn-secondary">Submit</button>
+    <div class="result"></div>
 </div>
