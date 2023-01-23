@@ -81,7 +81,7 @@ router.get('/logout', (req, res) => {
   }
 });
 
-router.get('/sandwich', async (req, res) => {
+router.get('/sandwich', withAuth, async (req, res) => {
   // if((req.session.logged_in))
   const categoryData = await Category.findAll({
     include: {
@@ -91,8 +91,7 @@ router.get('/sandwich', async (req, res) => {
   const categories = categoryData.map((category) =>
     category.get({ plain: true })
   );
-  res.render('sandwich', { categories, logged_in: req.session.logged_in, });
+  res.render('sandwich', { categories, logged_in: req.session.logged_in });
 });
 
 module.exports = router;
-

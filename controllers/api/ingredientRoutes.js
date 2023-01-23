@@ -55,7 +55,7 @@ router.post('/', withAuth, async (req, res) => {
       name: req.body.name,
       category_id: req.body.category_id,
     });
-
+    console.log(req.body);
     if (!dbIngredientData) {
       return res.status(404).json({ message: 'Did not find those categories' });
     } else {

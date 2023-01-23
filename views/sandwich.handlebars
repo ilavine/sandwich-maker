@@ -1,11 +1,13 @@
-<div class='container'>
-  <h4> Choose five ingredients to make your own sandwich with!</h4>
-  {{#each categories as |category|}}
-  <select>
-    {{#each category.ingredients as |ingredient|}}
-    <option>{{ingredient.name}}</option>
+<form id='myForm'>
+  <div class='container'>
+    <h4> Choose five ingredients to make your own sandwich with!</h4>
+    {{#each categories as |category|}}
+      <select id='mySelect'>
+        {{#each category.ingredients as |ingredient|}}
+          <option values={{category.ingredients}},{{ingredient.name}}>{{ingredient.name}}</option>
+        {{/each}}
+      </select>
     {{/each}}
-  </select>
-  {{/each}}
-  <button type='button' '(click)=“onChangeType()' class='btn btn-secondary'>Submit</button>
+    <button type='button' id='submit' class='btn btn-secondary'>Submit</button>
   </div>
+</form>
