@@ -1,27 +1,28 @@
-<div class="dashboard">
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <h2 class="display-4 fw-bold">Sandwich Dashboard</h2>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-         <ul class='nav nav-pills justify-content-end'>
-            <li class='nav-item justify-content-center''>
-              <a class='nav-link' aria-current='page' href='/sandwich'><h4>Create Your
-                Sandwich</h4></a>
-            </li>
-        </ul>
-      </div>
+<div class='dashboard'>
+  <div class='px-4 pt-5 my-5 text-center border-bottom'>
+    <h2 class='display-4 fw-bold'>Sandwich Dashboard</h2>
+    <div class='d-grid gap-2 d-sm-flex justify-content-sm-center mb-5'>
+      <ul style="list-style: none;">
+        <li><a
+            href='/sandwich'
+            id='signup-btn'
+            class='btn btn-lg justify-content-center mb-3'
+            role='button'
+          >Create Your Sandwich</a></li>
+      </ul>
+
     </div>
-  
- 
+  </div>
 
   <div class='row flex-wrap justify-content-around'>
     {{#each data as |sandwich|}}
 
       <div class='card flex-wrap mx-auto' style='width: 18rem;'>
 
-        {{!-- <div class='card-header'> --}}
-          {{!-- <img src={{}} class="card-img-top" alt="{{}}"> --}}
-          {{!-- <a class='card-title'>Title</a>
-        </div> --}}
+        {{! <div class='card-header'> }}
+        {{!-- <img src={{}} class="card-img-top" alt="{{}}"> --}}
+        {{! <a class='card-title'>Title</a>
+        </div> }}
 
         <div class='card-body'>
           <ul class='list-group list-group-flush'>
