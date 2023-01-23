@@ -2,9 +2,9 @@
   <h2 class='px-4 pt-5 my-5 text-center'>
     Choose five ingredients to make your own sandwich with!</h2>
   {{#each categories as |category|}}
-    <select>
+    <select id='mySelect{{category.id}}'>
       {{#each category.ingredients as |ingredient|}}
-        <option>{{ingredient.name}}</option>
+        <option value='{{ingredient.id}}'>{{ingredient.name}}</option>
       {{/each}}
     </select>
   {{/each}}
