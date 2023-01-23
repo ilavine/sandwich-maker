@@ -27,30 +27,9 @@
   </head>
 
   <body>
-    
-    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">🥪 Sandwich Maker</a>
-        {{#if logged_in}}
-        <ul class="nav justify-content-start"></ul>
-          <h2> Welcome, {{name}}</h2>
-          <ul style="list-style: none;">
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
-          </ul>
-        {{else}}
-          <ul class="nav nav-pills justify-content-end">
-              <li class="nav-item">
-                <a class="nav-link active" id="signup-btn" aria-current="page" href="/signup">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-          </ul>
-      </div>
-    </nav>
-    {{/if}}
+     {{>header}} 
+
+ 
 
     <main class="container container-fluid">
       <div class="row justify-content-center">
@@ -58,48 +37,10 @@
         {{{body}}}
       </div>
     </main>
-   
-    <section class="py-5 text-center container">
-       {{#if logged_in}}
-        <div id="logged" class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Sandwich Dashboard</h1>
-            <p class="lead mb-4">Share your sandwich recipe with others.</p>
-          </div>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <ul class="nav nav-pills justify-content-end">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/sandwich">Create Your Sandwich</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      {{else}}
-        <h2>Welcome!</h2>
-        <h4>Create an Account to Share Your Favorite Sandwich Recipe</h4>
-        <ul style="list-style: none;">
-          <li><a
-              href="/signup"
-                id="signup-btn"
-              class="btn btn-lg justify-content-center mb-3"
-              role="button"
-            >Sign Up</a></li>
-          <li><h4>If you already have an account, please login</h4><a
-              href="/login"
-              class="btn btn-outline-primary justify-content-center mb-3"
-              role="button"
-            >Login</a></li>
-        </ul>
-         {{/if}}
-    </section>
-   
-    <footer>
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i class="fa-brands fa-github"></i></a></li>
-        </ul>
-        <p class="text-center text-muted">Group 4</p>
-    </footer>
+
+      {{>section}}
+
+     {{>footer}}
     
 
     {{! bootstrap files }}

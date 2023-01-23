@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="/">🥪 Sandwich Maker</a>
+    {{#if logged_in}}
+    <ul class="nav justify-content-start"></ul>
+        <h2> Welcome, {{name}}</h2>
+        <ul style="list-style: none;">
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        </ul>
+    {{else}}
+        <ul class="nav nav-pills justify-content-end">
+            <li class="nav-item">
+            <a class="nav-link active" id="signup-btn" aria-current="page" href="/signup">Sign Up</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{{/if}}
