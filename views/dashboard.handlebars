@@ -1,25 +1,31 @@
 <div class="dashboard">
-  <h2>Sandwich Dashboard</h2>
-  <ul class='nav nav-pills justify-content-end'>
-    <li class='nav-item'>
-      <a class='nav-link active' aria-current='page' href='/sandwich'>Create Your
-        Sandwich</a>
-    </li>
-  </ul>
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h2 class="display-4 fw-bold">Sandwich Dashboard</h2>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+         <ul class='nav nav-pills justify-content-end'>
+            <li class='nav-item justify-content-center''>
+              <a class='nav-link' aria-current='page' href='/sandwich'><h4>Create Your
+                Sandwich</h4></a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  
+ 
 
   <div class='row flex-wrap justify-content-around'>
     {{#each data as |sandwich|}}
 
       <div class='card flex-wrap mx-auto' style='width: 18rem;'>
 
-        <div class='card-header'>
+        {{!-- <div class='card-header'> --}}
           {{!-- <img src={{}} class="card-img-top" alt="{{}}"> --}}
-          <a class='card-title'>Title</a>
-        </div>
+          {{!-- <a class='card-title'>Title</a>
+        </div> --}}
 
         <div class='card-body'>
           <ul class='list-group list-group-flush'>
-            <li class='list-group-item'>Name:{{sandwich.name}}
+            <li class='list-group-item'><h4>{{sandwich.name}}</h4>
             </li>
             {{#each sandwich.ingredients as |ingredient|}}
               <li class='list-group-item'>Ingredients:
