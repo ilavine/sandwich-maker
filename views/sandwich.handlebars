@@ -13,7 +13,7 @@
   {{#each categories as |category|}}
     <select>
       {{#each category.ingredients as |ingredient|}}
-        <option>{{ingredient.name}}</option>
+        <option value='{{ingredient.id}}'>{{ingredient.name}}</option>
       {{/each}}
     </select>
   {{/each}}
