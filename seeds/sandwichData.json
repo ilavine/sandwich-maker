@@ -1,22 +1,22 @@
 [
     {
-        "name": "turkey sammich",
-        "sandwich_id": 2
-    },
-    {
-        "name": "ham sammich",
+        "name": "Turkey Sandwich",
         "sandwich_id": 3
     },
     {
-        "name": "bologna sammich",
+        "name": "Ham Sandwich",
+        "sandwich_id": 2
+    },
+    {
+        "name": "Proscuitto Sandwich",
         "sandwich_id": 1
     },
     {
-        "name": "chicken salad sammich",
+        "name": "Salami Sandwich",
         "sandwich_id": 5
     },
     {
-        "name": "BLT",
+        "name": "Roast Beef",
         "sandwich_id": 4
     }
 ]
