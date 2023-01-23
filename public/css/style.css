@@ -9,21 +9,19 @@ body {
   background-color: #ffa384;
 }
 
-section,
-.row {
-  margin: 20px;
-  align-items: center;
-  justify-content: center;
+.container {
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
 }
 
 
-
-#logged {
+/* #logged {
   display: block;
   position: relative;
   top: 170;
   background-color: wheat;
-}
+} */
 
 .navbar {
   width: 100%;
@@ -60,16 +58,18 @@ footer {
 }
 
 .slideshow {
+  margin: 0 auto;
+  padding: 0;
   display: flex;
   justify-content: center;
   max-width: 60%;
-  height: fit-content;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
 }
 
 .slide img {
   max-width: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .slick-prev:before,

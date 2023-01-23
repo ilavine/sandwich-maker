@@ -2,13 +2,11 @@
     <div class="container-fluid">
     <a class="navbar-brand" href="/">🥪 Sandwich Maker</a>
     {{#if logged_in}}
-    <ul class="nav justify-content-start"></ul>
-        <h2> Welcome, {{name}}</h2>
+    <ul class="nav justify-content-start" style="list-style: none;"></ul>
         <ul style="list-style: none;">
-        <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
         </li>
-        </ul>
+    </ul>
     {{else}}
         <ul class="nav nav-pills justify-content-end">
             <li class="nav-item">

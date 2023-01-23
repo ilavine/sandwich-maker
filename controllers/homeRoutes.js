@@ -41,7 +41,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       // console.log(dbSandwichData);
       res.render('dashboard', {
         logged_in: req.session.logged_in,
-        data: sandwiches,
+        data: sandwiches
       });
       // res.json(dbSandwichData);
     }
@@ -91,7 +91,7 @@ router.get('/sandwich', async (req, res) => {
   const categories = categoryData.map((category) =>
     category.get({ plain: true })
   );
-  res.render('sandwich', { categories, logged_in: req.session.logged_in, });
+  res.render('sandwich', { categories, logged_in: req.session.logged_in});
 });
 
 module.exports = router;
