@@ -10,76 +10,33 @@
       href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/jass.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="/css/jass.css" />
     <link rel="stylesheet" href="/css/style.css" />
+   
   </head>
 
   <body>
-    
-    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">🥪 Sandwich Maker</a>
-        {{#if logged_in}}
-        <ul class="nav justify-content-end"></ul>
-          <h2> {{name}}</h2>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
-        {{else}}
-          <ul class="nav nav-pills justify-content-end">
-              <li class="nav-item">
-                <a class="nav-link active" id="signup-btn" aria-current="page" href="/signup">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-          </ul>
-      </div>
-    </nav>
-    {{/if}}
-
-     <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+    {{>header}} 
+        <!-- Render the sub layout -->
+    <div class="container container-fluid mt-5">
       {{{body}}}
-     </main>
+    </div>
 
-    <section class="greeting">
-      {{#if logged_in}}
-        <h2>Welcome, {{name}}! </h2>
-        <button
-          class="no-button justify-content-center text-centered mb-3"
-          id="logout"
-        >Logout</button>
-      {{else}}
-        <h2>Welcome!</h2>
-        <h4>Create an Account to Share Your Favorite Sandwich Recipe</h4>
-        <ul style="list-style: none;">
-          <li><a
-              href="/signup"
-                id="signup-btn"
-              class="btn btn-lg justify-content-end mb-3"
-              role="button"
-            >Sign Up</a></li>
-          <li><a
-              href="/login"
-              class="btn btn-outline-primary justify-content-end mb-3"
-              role="button"
-            >Login</a></li>
-        </ul>
-      {{/if}}
-    </section>
+    {{>section}}
 
-    <footer >
-      <div class="container align-center-lg">
-        <span class="text-muted">Group 4</span>
-      </div>
-    </footer>
+    {{>footer}}
+    
 
     {{! bootstrap files }}
     <script
@@ -88,16 +45,15 @@
       crossorigin="anonymous"
     ></script>
 
+
     <!-- Render script for logged in users only -->
     {{#if logged_in}}<script></script>{{/if}}
 
     {{! jQuery files }}
-    <script
-      src="https://code.jquery.com/jquery-3.6.3.min.js"
-      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-      crossorigin="anonymous"
-    ></script>
+   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
+  
   </body>
 
 </html>

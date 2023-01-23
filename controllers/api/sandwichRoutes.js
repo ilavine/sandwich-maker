@@ -1,4 +1,4 @@
-const { Sandwich } = require('../../models');
+const { Sandwich, Ingredients } = require('../../models');
 const router = require('express').Router();
 
 const withAuth = require('../../utils/auth');
@@ -7,10 +7,10 @@ router.get('/', async (req, res) => {
   // find all sandwichesSandwich
   try {
     let dbSandwichData = await Sandwich.findAll({
-      // include: {
-      //   model: Product,
-      //   attributes: ['id', 'name'],
-      // },
+      include: {
+        model: Ingredients,
+        attributes: ['id', 'name'],
+      },
     });
 
     if (!dbSandwichData) {

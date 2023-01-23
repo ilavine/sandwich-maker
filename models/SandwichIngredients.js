@@ -19,7 +19,7 @@ SandwichIngredients.init(
         key: 'id',
       },
     },
-    ingredients_id: {
+    ingredient_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

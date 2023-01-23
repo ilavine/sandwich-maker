@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { User } = require('../models');
+const { Sandwich, Ingredients, Category } = require('../models');
 const withAuth = require('../utils/auth');
 const sandiwichHelper = require('../utils/sandwichHelper');
 
@@ -26,6 +26,25 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     //TODO: show the dashboard when user is logged in
+    if (req.session.logged_in) {
+      const dbSandwichData =
+        (await Sandwich.findAll({
+          include: {
+            model: Ingredients,
+            attributes: ['id', 'name'],
+          },
+        })) || [];
+      const sandwiches = dbSandwichData.map((sandwiches) =>
+        sandwiches.get({ plain: true })
+      );
+
+      // console.log(dbSandwichData);
+      res.render('dashboard', {
+        logged_in: req.session.logged_in,
+        data: sandwiches
+      });
+      // res.json(dbSandwichData);
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -51,4 +70,29 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.redirect('/');
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+router.get('/sandwich', async (req, res) => {
+  // if((req.session.logged_in))
+  const categoryData = await Category.findAll({
+    include: {
+      model: Ingredients,
+    },
+  });
+  const categories = categoryData.map((category) =>
+    category.get({ plain: true })
+  );
+  res.render('sandwich', { categories, logged_in: req.session.logged_in});
+});
+
 module.exports = router;
+
