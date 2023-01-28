@@ -1,8 +1,9 @@
 const likeButtons = $('.btn-like');
 let clicked = false;
+let count = 0;
 
 const clickHandler = function () {
-  let count = 0;
+  
   return function () {
     if (!clicked) {
       clicked = true;
