@@ -6,8 +6,9 @@ const selectTwo = document.getElementById('select1');
 const selectThree = document.getElementById('select2');
 const selectFour = document.getElementById('select3');
 const selectFive = document.getElementById('select4');
+
 // Add event listener to the submit button
-submitButton.addEventListener('click', function (event) {
+subButton?.addEventListener('click', function (event) {
   event.preventDefault();
   // prevent default submission of the form
   // Get the selected value
@@ -38,3 +39,29 @@ submitButton.addEventListener('click', function (event) {
       console.log(data);
     });
 });
+
+const delButtonHandler = async (event) => {
+  try {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+
+      const response = await fetch(`/api/sandwich/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        console.log('response', response);
+        alert('Failed to delete sandwich');
+      }
+    }
+  } catch (e) {
+    console.log('delButtonHandlerError', e);
+  }
+};
+
+document
+  .querySelectorAll('.sandwich-list')
+  .forEach((item) => item.addEventListener('click', delButtonHandler));
+

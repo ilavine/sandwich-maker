@@ -22,10 +22,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// TODO: show the dashboard when user is logged in
+//show the dashboard when user is logged in
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    //TODO: show the dashboard when user is logged in
+    //show the dashboard when user is logged in
     if (req.session.logged_in) {
       const dbSandwichData =
         (await Sandwich.findAll({
@@ -41,7 +41,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       // console.log(dbSandwichData);
       res.render('dashboard', {
         logged_in: req.session.logged_in,
-        data: sandwiches
+        data: sandwiches,
       });
       // res.json(dbSandwichData);
     }

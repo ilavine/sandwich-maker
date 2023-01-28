@@ -148,13 +148,13 @@ router.put('/:id', withAuth, async (req, res) => {
 router.delete('/:id', withAuth, async (req, res) => {
   //console.log(req.body, req.params.id);
   try {
-    let delSandwich = await Sandwich.destroy({
+    const delSandwich = await Sandwich.destroy({
       where: {
         id: req.params.id,
       },
     });
     if (!delSandwich) {
-      return res.status(404).json({ message: 'Did not find those sandwiches' });
+      return res.status(404).json({ message: 'Could not delete sandwich' });
     } else {
       return res.json(delSandwich);
     }
