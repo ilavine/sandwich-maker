@@ -2,7 +2,7 @@
   <div class='px-4 pt-5 my-5 text-center border-bottom'>
     <h2 class='display-4 fw-bold'>Sandwich Dashboard</h2>
     <div class='d-grid gap-2 d-sm-flex justify-content-sm-center mb-5'>
-      <ul style="list-style: none;">
+      <ul style='list-style: none;'>
         <li><a
             href='/sandwich'
             id='signup-btn'
@@ -35,9 +35,10 @@
             <li class='list-group-item'>Rating: </li>
           </ul>
           <div class='d-grid gap-2 d-md-block'>
-            <button class='btn btn-primary btn-like btn-dashboard' type='button'><i
-                class='fa-solid fa-heart'
-              ></i>
+            <button
+              class='btn btn-primary btn-like btn-dashboard'
+              type='button'
+            ><i class='fa-solid fa-heart'></i>
               <span class='ui basic blue label'>0</span></button>
             <button
               class='btn btn-primary btn-dashboard'
@@ -45,8 +46,14 @@
               data-bs-toggle='modal'
               data-bs-target='#exampleModal'
             ><i class='fa-regular fa-comment'></i></button>
-            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
-              title="Delete"><i class="fa fa-trash"></i></button>
+            <button
+              class='btn btn-danger btn-sm rounded-0 sandwich-list'
+              type='button'
+              data-toggle='tooltip'
+              data-placement='top'
+              title='Delete'
+              data-id='{{sandwich.id}}'
+            ><i class='fa fa-trash'></i></button>
 
             <!-- Modal -->
             <div
@@ -111,3 +118,4 @@
   src='//code.jquery.com/jquery-migrate-1.2.1.min.js'
 ></script>
 <script type='text/javascript' src='/js/like.js'></script>
+
