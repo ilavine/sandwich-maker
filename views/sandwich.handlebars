@@ -8,12 +8,13 @@
       placeholder='Sandwich name'
       aria-label='Username'
       aria-describedby='basic-addon1'
+      id='sandwichName'
     />
   </div>
   {{#each categories as |category|}}
-    <select>
+    <select id='select{{@index}}'>
       {{#each category.ingredients as |ingredient|}}
-        <option value='{{ingredient.id}}'>{{ingredient.name}}</option>
+        <option value={{ingredient.id}}>{{ingredient.name}}</option>
       {{/each}}
     </select>
   {{/each}}
@@ -21,6 +22,7 @@
     type='button'
     (click)='onChangeType()'
     class='btn btn-secondary'
+    id='submit'
   >Submit</button>
   <div class='result'></div>
 </div>

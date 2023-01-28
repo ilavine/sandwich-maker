@@ -57,7 +57,9 @@ router.post('/', withAuth, async (req, res) => {
     });
     console.log(req.body);
     if (!dbIngredientData) {
-      return res.status(404).json({ message: 'Did not find those categories' });
+      return res
+        .status(404)
+        .json({ message: 'Did not find those ingredients' });
     } else {
       return res.json(dbIngredientData);
     }

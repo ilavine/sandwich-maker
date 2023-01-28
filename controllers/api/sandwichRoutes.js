@@ -1,3 +1,5 @@
+// endpoint for /sandiwch
+
 const { Sandwich, Ingredients, SandwichIngredients } = require('../../models');
 const router = require('express').Router();
 
@@ -49,35 +51,71 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
+// router.post('/', withAuth, async (req, res) => {
+//   // create a new sandwich
+//   try {
+//     let dbSandwichData = await Sandwich.create({
+//       user_id: req.session.user_id,
+//       name: req.body.name,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueOne,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueTwo,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueThree,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueFour,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueFive,
+//     });
+//     await Sandwich.create({
+//       name: dbSandwichData.name,
+//     });
+//     if (!dbSandwichData) {
+//       return res.status(404).json({ message: 'Did not find those sandwiches' });
+//     } else {
+//       return res.json(dbSandwichData);
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ message: 'an error occured' });
+//   }
+// });
+
 router.post('/', withAuth, async (req, res) => {
-  // create a new sandwich
   try {
     let dbSandwichData = await Sandwich.create({
       user_id: req.session.user_id,
-      name: req.body.id,
+      name: req.body.name,
     });
-    await SandwichIngredients.create({
-      sandwich_id: dbSandwichData.id,
-      ingredient_id: req.body.valueOne,
+
+    const ingredientIds = [
+      req.body.valueOne,
+      req.body.valueTwo,
+      req.body.valueThree,
+      req.body.valueFour,
+      req.body.valueFive,
+    ];
+    const promises = ingredientIds.map((ingredientId) => {
+      return SandwichIngredients.create({
+        sandwich_id: dbSandwichData.id,
+        ingredient_id: ingredientId,
+      });
     });
-    await SandwichIngredients.create({
-      sandwich_id: dbSandwichData.id,
-      ingredient_id: req.body.valueTwo,
-    });
-    await SandwichIngredients.create({
-      sandwich_id: dbSandwichData.id,
-      ingredient_id: req.body.valueThree,
-    });
-    await SandwichIngredients.create({
-      sandwich_id: dbSandwichData.id,
-      ingredient_id: req.body.valueFour,
-    });
-    await SandwichIngredients.create({
-      sandwich_id: dbSandwichData.id,
-      ingredient_id: req.body.valueFive,
-    });
+    await Promise.all(promises);
+
     if (!dbSandwichData) {
-      return res.status(404).json({ message: 'Did not find those categories' });
+      return res.status(404).json({ message: 'Did not find those sandwiches' });
     } else {
       return res.json(dbSandwichData);
     }
@@ -97,7 +135,7 @@ router.put('/:id', withAuth, async (req, res) => {
       },
     });
     if (!updatedSandwich) {
-      return res.status(404).json({ message: 'Did not find those categories' });
+      return res.status(404).json({ message: 'Did not find those sandwiches' });
     } else {
       return res.json(updatedSandwich);
     }
@@ -116,7 +154,7 @@ router.delete('/:id', withAuth, async (req, res) => {
       },
     });
     if (!delSandwich) {
-      return res.status(404).json({ message: 'Did not find those categories' });
+      return res.status(404).json({ message: 'Did not find those sandwiches' });
     } else {
       return res.json(delSandwich);
     }
