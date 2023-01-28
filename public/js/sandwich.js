@@ -61,3 +61,4 @@ const delButtonHandler = async (event) => {
 document
   .querySelectorAll('.sandwich-list')
   .forEach((item) => item.addEventListener('click', delButtonHandler));
+

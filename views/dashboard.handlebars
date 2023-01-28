@@ -28,7 +28,12 @@
               data-placement='top'
               title='Delete'
               data-id='{{sandwich.id}}'
-            ><i class='fa fa-trash'></i></button>
+            ><i class='fa fa-trash' class='btn btn-danger btn-sm rounded-0 sandwich-list'
+              type='button'
+              data-toggle='tooltip'
+              data-placement='top'
+              title='Delete'
+              data-id='{{sandwich.id}}'></i></button>
         </div>
 
         <div class='card-body'>
@@ -45,19 +50,18 @@
             {{/each}}
 
           </ul>
-          <div class='d-grid gap-2 d-md-block'>
+          <div class='d-grid gap-1 d-md-flex mt-4'>
             <button
               class='btn btn-primary btn-like btn-dashboard'
-              type='button'
-            ><i class='fa-solid fa-heart'></i>
-              <span class='ui basic blue label'>0</span></button>
+              type='button' data-id='{{sandwich.id}}'`
+            ><i class='fa-regular fa-heart' ></i>
+              <span class='like-label'>0</span></button>
             <button
-              class='btn btn-primary btn-dashboard'
+              class='btn btn-primary btn-comment btn-dashboard'
               type='button'
               data-bs-toggle='modal'
               data-bs-target='#exampleModal'
-
-            ><i class='fa-solid fa-comment'></i> <span class='ui basic blue label'>0</span></button></button>
+            ><i class='fa-regular fa-comment'></i> <span class='comment-label'>0</span></button>
 
             <!-- Modal -->
             <div
@@ -83,7 +87,7 @@
                   </div>
                   <div class='modal-body'>
                     <div class='input-group'>
-                      <textarea
+                      <textarea id="user-comment"
                         class='form-control'
                         aria-label='With textarea'
                       ></textarea>
@@ -96,12 +100,14 @@
                       data-bs-dismiss='modal'
                     >Close</button>
                     <button
-                      onclick='addComment()'
                       id='myBtn'
                       type='button'
-                      class='btn btn-primary'
+                      class='btn btn-primary btn-submit'
                     >Submit</button>
                   </div>
+                  {{!-- /comment box --}}
+                  <div class="media-body"></div>
+                  {{!-- end /comment box --}}
                 </div>
               </div>
             </div>
@@ -122,4 +128,5 @@
   src='//code.jquery.com/jquery-migrate-1.2.1.min.js'
 ></script>
 <script type='text/javascript' src='/js/like.js'></script>
+<script type='text/javascript' src='/js/comment.js'></script>
 
