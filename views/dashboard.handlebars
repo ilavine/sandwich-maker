@@ -87,7 +87,7 @@
                   </div>
                   <div class='modal-body'>
                     <div class='input-group'>
-                      <textarea
+                      <textarea id="user-comment"
                         class='form-control'
                         aria-label='With textarea'
                       ></textarea>
@@ -100,12 +100,14 @@
                       data-bs-dismiss='modal'
                     >Close</button>
                     <button
-                      onclick='addComment()'
                       id='myBtn'
                       type='button'
-                      class='btn btn-primary'
+                      class='btn btn-primary btn-submit'
                     >Submit</button>
                   </div>
+                  {{!-- /comment box --}}
+                  <div class="media-body"></div>
+                  {{!-- end /comment box --}}
                 </div>
               </div>
             </div>
@@ -126,4 +128,5 @@
   src='//code.jquery.com/jquery-migrate-1.2.1.min.js'
 ></script>
 <script type='text/javascript' src='/js/like.js'></script>
+<script type='text/javascript' src='/js/comment.js'></script>
 
