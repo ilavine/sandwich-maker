@@ -1,8 +1,8 @@
-/* * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-} */
+}
 
 body {
   font-family: Happy Monkey;
@@ -17,31 +17,37 @@ body {
 .navbar-brand {
   font-size: 40px;
   font-weight: bolder;
-  color: #008aa5;
+  color: #239CAA;
 }
 
 h1,
 h2,
 h4 {
-  color: #008aa5;
+  color: #239CAA;
 }
 
 footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 90px;
-  margin-top: 40px;
+  height: 10%;
   width: 100%;
   background-color: whitesmoke;
-  color: #008aa5;
 }
 
 .btn {
   color: whitesmoke;
-  background-color: #008aa5;
+  background-color: #239CAA;
   margin: 2px;
+}
+
+#signup-btn {
+  background-color: #239CAA;
+}
+
+#login-btn {
+  color: #239CAA;
 }
 
 .btn-dashboard {
@@ -71,13 +77,13 @@ footer {
 }
 
 .slide img {
-  max-width: 100%;
   width: 100%;
-  overflow: hidden;
+  width: 100%;
+  display: block;
 }
 
 .slick-prev:before,
 .slick-next:before {
-  color: #008aa5;
+  color: #239CAA;
 }
 

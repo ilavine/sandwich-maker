@@ -5,7 +5,7 @@
       <ul style='list-style: none;'>
         <li><a
             href='/sandwich'
-            id='signup-btn'
+            id='submit-btn'
             class='btn btn-lg justify-content-center mb-3'
             role='button'
           >Create Your Sandwich</a></li>
@@ -19,20 +19,31 @@
 
       <div class='card flex-wrap mx-auto' style='width: 18rem;'>
 
-        {{! <div class='card-header'> }}
-        {{!-- <img src={{}} class="card-img-top" alt="{{}}"> --}}
-        {{! <a class='card-title'>Title</a>
-        </div> }}
+         <div class='d-grid gap-2 d-md-flex justify-content-md-end mt-2'>
+           
+            <button
+              class='btn btn-danger btn-sm rounded-0 sandwich-list'
+              type='button'
+              data-toggle='tooltip'
+              data-placement='top'
+              title='Delete'
+              data-id='{{sandwich.id}}'
+            ><i class='fa fa-trash'></i></button>
+        </div>
 
         <div class='card-body'>
-          <ul class='list-group list-group-flush'>
+          <div class='px-1 pt-1 my-2 text-center border-bottom'>
             <li class='list-group-item'><h4>{{sandwich.name}}</h4>
             </li>
+          </div>
+          
+          <ul class='list-group list-group-flush'>
+
             {{#each sandwich.ingredients as |ingredient|}}
               <li class='list-group-item'>Ingredients:
                 {{ingredient.name}}</li>
             {{/each}}
-            <li class='list-group-item'>Rating: </li>
+
           </ul>
           <div class='d-grid gap-2 d-md-block'>
             <button
@@ -45,15 +56,8 @@
               type='button'
               data-bs-toggle='modal'
               data-bs-target='#exampleModal'
-            ><i class='fa-regular fa-comment'></i></button>
-            <button
-              class='btn btn-danger btn-sm rounded-0 sandwich-list'
-              type='button'
-              data-toggle='tooltip'
-              data-placement='top'
-              title='Delete'
-              data-id='{{sandwich.id}}'
-            ><i class='fa fa-trash'></i></button>
+
+            ><i class='fa-solid fa-comment'></i> <span class='ui basic blue label'>0</span></button></button>
 
             <!-- Modal -->
             <div
