@@ -21,18 +21,22 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  try {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/ingredients/${id}`, {
-      method: 'DELETE',
-    });
+      const response = await fetch(`/api/ingredients/${id}`, {
+        method: 'DELETE',
+      });
 
-    if (response.ok) {
-      document.location.replace('/ingredients');
-    } else {
-      alert('Failed to delete ingredient');
+      if (response.ok) {
+        document.location.replace('/ingredients');
+      } else {
+        alert('Failed to delete ingredient');
+      }
     }
+  } catch (e) {
+    console.log('delButtonHandlerError', e);
   }
 };
 
@@ -40,6 +44,3 @@ document
   .querySelector('.new-sandwich-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.sandwich-list')
-  .addEventListener('click', delButtonHandler);
