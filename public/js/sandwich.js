@@ -1,11 +1,12 @@
 // Get the submit button
-const subButton = document.getElementById('submit');
+const submitButton = document.getElementById('submit');
+const sandwichName = document.getElementById('sandwichName');
+const selectOne = document.getElementById('select0');
+const selectTwo = document.getElementById('select1');
+const selectThree = document.getElementById('select2');
+const selectFour = document.getElementById('select3');
+const selectFive = document.getElementById('select4');
 
-const selectOne = document.getElementById('mySelect1');
-const selectTwo = document.getElementById('mySelect2');
-const selectThree = document.getElementById('mySelect3');
-const selectFour = document.getElementById('mySelect4');
-const selectFive = document.getElementById('mySelect5');
 // Add event listener to the submit button
 subButton?.addEventListener('click', function (event) {
   event.preventDefault();
@@ -16,6 +17,7 @@ subButton?.addEventListener('click', function (event) {
   const selectedThreeValue = selectThree.value;
   const selectedFourValue = selectFour.value;
   const selectedFiveValue = selectFive.value;
+  const selectedSandwichName = sandwichName.value;
 
   // Send the selected value to the server
   fetch('/api/sandwich', {
@@ -29,6 +31,7 @@ subButton?.addEventListener('click', function (event) {
       valueThree: selectedThreeValue,
       valueFour: selectedFourValue,
       valueFive: selectedFiveValue,
+      name: selectedSandwichName,
     }),
   })
     .then((response) => response.json())
