@@ -52,7 +52,8 @@ router.post('/', async (req, res) => {
     let dbReviewData = await Review.create({
       user_id: req.body.user_id,
       sandwich_id: req.body.sandwich_id,
-      include: [User, Sandwich],
+      review_id: req.body.review_id,
+      include: [User, Sandwich, Review],
     });
     if (!dbReviewData) {
       return res.status(404).json({ message: 'Could not add those reviews' });

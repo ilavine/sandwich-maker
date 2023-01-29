@@ -1,5 +1,12 @@
+$('.btn-submit').click(function () {
+  media.append(
+    `<h4>Todo: display username</h4> <p> ${$('#user-comment').val()} </p>`
+  );
+});
+
 const newFormHandler = async (event) => {
   event.preventDefault();
+  const media = $('.media-body');
 
   const name = document.querySelector('#review-name').value.trim();
 
@@ -40,6 +47,6 @@ document
   .querySelector('.new-review-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.review-list')
-  .addEventListener('click', delButtonHandler);
+// document
+//   .querySelector('.review-list')
+//   .addEventListener('click', delButtonHandler);

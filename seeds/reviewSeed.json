@@ -2,16 +2,19 @@
   {
     "user_id": 1,
     "sandwich_id": 1,
+    "review_id":1,
     "review_text": "this is amazing"
   },
   {
     "user_id": 2,
     "sandwich_id": 2,
+    "review_id": 2,
     "review_text": "this sandwich is terrible"
   },
   {
     "user_id": 3,
     "sandwich_id": 3,
+    "review_id": 3,
     "review_text": "I would like to make this"
   }
 ]
