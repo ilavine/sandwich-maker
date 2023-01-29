@@ -8,7 +8,7 @@ const selectFour = document.getElementById('select3');
 const selectFive = document.getElementById('select4');
 
 // Add event listener to the submit button
-subButton?.addEventListener('click', function (event) {
+submitButton.addEventListener('click', function (event) {
   event.preventDefault();
   // prevent default submission of the form
   // Get the selected value
@@ -64,4 +64,3 @@ const delButtonHandler = async (event) => {
 document
   .querySelectorAll('.sandwich-list')
   .forEach((item) => item.addEventListener('click', delButtonHandler));
-
