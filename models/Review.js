@@ -19,7 +19,7 @@ Review.init(
         key: 'id',
       },
     },
-    sandwich_id: {
+    review_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
