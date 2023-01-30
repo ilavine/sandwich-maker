@@ -1,3 +1,4 @@
+const media = $('.media-body');
 $('.btn-submit').click(function () {
   media.append(
     `<h4>Todo: display username</h4> <p> ${$('#user-comment').val()} </p>`
@@ -6,7 +7,6 @@ $('.btn-submit').click(function () {
 
 const newFormHandler = async (event) => {
   event.preventDefault();
-  const media = $('.media-body');
 
   const name = document.querySelector('#review-name').value.trim();
 
