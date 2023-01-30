@@ -1,8 +1,10 @@
 const media = $('.media-body');
 const username = "{{name}}";
+const userComment =  $('#user-comment').val();
+
 $('.btn-submit').click(function () {
   media.html(
-    `<h2>${username}</h2> <p> ${$('#user-comment').val()} </p>`
+    `<h2>${username}</h2> <p> ${userComment} </p>`
   );
 });
 
@@ -28,7 +30,7 @@ const newFormHandler = async (event) => {
   }
 };
 
-const delButtonHandler1 = async (event) => {
+const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
@@ -44,6 +46,10 @@ const delButtonHandler1 = async (event) => {
   }
 };
 
+document
+  .querySelector('.new-review-form')
+  .addEventListener('submit', newFormHandler);
+
 // document
-//   .querySelector('.new-review-form')
-//   .addEventListener('submit', newFormHandler);
+//   .querySelector('.review-list')
+//   .addEventListener('click', delButtonHandler);
