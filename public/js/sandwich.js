@@ -6,6 +6,7 @@ const selectTwo = document.getElementById('select1');
 const selectThree = document.getElementById('select2');
 const selectFour = document.getElementById('select3');
 const selectFive = document.getElementById('select4');
+const message = document.getElementById('message');
 
 // Add event listener to the submit button
 submitButton.addEventListener('click', function (event) {
@@ -37,6 +38,9 @@ submitButton.addEventListener('click', function (event) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      message.innerHTML = `<div class="alert alert-success" role="alert">
+      <h2>Your sandwich has been saved!</h2>🍔 </div>;`
+      setTimeout(() => {  document.location.replace('/dashboard'); }, 2000);
     });
 });
 
