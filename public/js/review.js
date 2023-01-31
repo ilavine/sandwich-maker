@@ -11,14 +11,13 @@ const submitComment = async (index) => {
         });
   console.log(response);
   media.html(`<p>${text}</p>`);
-    
+
         if (response.ok) {
           document.location.replace('/dashboard');
         } else {
           alert('Failed to create review');
         }
 
-      
 };
 
 
