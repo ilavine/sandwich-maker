@@ -9,7 +9,7 @@ const selectFive = document.getElementById('select4');
 const message = document.getElementById('message');
 
 // Add event listener to the submit button
-submitButton.addEventListener('click', function (event) {
+submitButton?.addEventListener('click', function (event) {
   event.preventDefault();
   // prevent default submission of the form
   // Get the selected value
@@ -39,8 +39,10 @@ submitButton.addEventListener('click', function (event) {
     .then((data) => {
       console.log(data);
       message.innerHTML = `<div class="alert alert-success" role="alert">
-      <h2>Your sandwich has been saved!</h2>🍔 </div>;`
-      setTimeout(() => {  document.location.replace('/dashboard'); }, 2000);
+      <h2>Your sandwich has been saved!</h2>🍔 </div>;`;
+      setTimeout(() => {
+        document.location.replace('/dashboard');
+      }, 2000);
     });
 });
 
