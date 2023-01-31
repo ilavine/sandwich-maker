@@ -48,11 +48,13 @@ router.get('/:id', withAuth, async (req, res) => {
 
 router.post('/', async (req, res) => {
   // create a new review
+  console.log(req.body, 'req');
   try {
     let dbReviewData = await Review.create({
       user_id: req.body.user_id,
       sandwich_id: req.body.sandwich_id,
       review_id: req.body.review_id,
+      review_text: req.body.text,
       include: [User, Sandwich, Review],
     });
     if (!dbReviewData) {
