@@ -63,17 +63,19 @@
               class='btn btn-primary btn-comment btn-dashboard'
               type='button'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#commentModal-{{sandwich.id}}'
+              data-id='{{sandwich.id}}'
             ><i class='fa-regular fa-comment'></i>
               <span class='comment-label'>0</span></button>
 
             <!-- Modal -->
             <div
               class='modal fade'
-              id='exampleModal'
+              id='commentModal-{{sandwich.id}}'
               tabindex='-1'
               aria-labelledby='exampleModalLabel'
               aria-hidden='true'
+              
             >
               <div class='modal-dialog'>
                 <div class='modal-content'>
@@ -92,7 +94,7 @@
                   <div class='modal-body'>
                     <div class='input-group'>
                       <textarea
-                        id='user-comment'
+                        id='user-comment-{{sandwich.id}}'
                         class='form-control'
                         aria-label='With textarea'
                       ></textarea>
@@ -105,15 +107,14 @@
                       data-bs-dismiss='modal'
                     >Close</button>
                     <button
-                      id='myBtn'
+                      id="submitComment-{{sandwich.id}}"
                       type='button'
                       class='btn btn-primary btn-submit'
-                      data-id='{{review.id}}'
-                      `
+                      onclick='submitComment({{@sandwich.id}})'
                     >Submit</button>
                   </div>
                   {{! /comment box }}
-                  <div class='media-body mx-4'></div>
+                  <div class='media-body-{{sandwich.id}} mx-4'></div>
                   {{! end /comment box }}
                 </div>
               </div>
