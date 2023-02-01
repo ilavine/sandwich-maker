@@ -25,11 +25,13 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
+ 
   try {
     let dbSandwichData = await Sandwich.findOne({
       where: {
         id: req.params.id,
       },
+  
     });
 
     if (!dbSandwichData) {
@@ -78,6 +80,7 @@ router.post('/', withAuth, async (req, res) => {
 
 // update sandwich - withAuth fx
 router.put('/:id', withAuth, async (req, res) => {
+ 
   try {
     let updatedSandwich = await Sandwich.update(req.body, {
       where: {
@@ -96,6 +99,7 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 router.delete('/:id', withAuth, async (req, res) => {
+  
   try {
     const delSandwich = await Sandwich.destroy({
       where: {

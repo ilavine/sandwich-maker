@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Sandwich, Ingredients, Category } = require('../models');
 const withAuth = require('../utils/auth');
+const sandiwichHelper = require('../utils/sandwichHelper');
 
 router.get('/', async (req, res) => {
   try {
@@ -89,7 +90,8 @@ router.get('/sandwich', withAuth, async (req, res) => {
   const categories = categoryData.map((category) =>
     category.get({ plain: true })
   );
-  res.render('sandwich', { categories, logged_in: req.session.logged_in });
+  res.render('sandwich', { categories, logged_in: req.session.logged_in});
+
 });
 
 module.exports = router;
