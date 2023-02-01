@@ -4,7 +4,7 @@ const router = require('express').Router();
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
-  // find all sandwichesSandwich
+  // find all sandwiches
   try {
     let dbSandwichData = await Sandwich.findAll({
       include: {
@@ -25,17 +25,11 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
-  // find one sandwich by its `id` value
-  // be sure to include its associated Products
   try {
     let dbSandwichData = await Sandwich.findOne({
       where: {
         id: req.params.id,
       },
-      // include: {
-      //   model: Product,
-      //   attributes: ['id', 'name'],
-      // },
     });
 
     if (!dbSandwichData) {
@@ -70,7 +64,6 @@ router.post('/', withAuth, async (req, res) => {
 
 // update sandwich - withAuth fx
 router.put('/:id', withAuth, async (req, res) => {
-  // console.log(req.body, req.params.id);
   try {
     let updatedSandwich = await Sandwich.update(req.body, {
       where: {
@@ -89,7 +82,6 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 router.delete('/:id', withAuth, async (req, res) => {
-  //console.log(req.body, req.params.id);
   try {
     let delSandwich = await Sandwich.destroy({
       where: {

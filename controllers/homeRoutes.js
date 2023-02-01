@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Sandwich, Ingredients, Category } = require('../models');
 const withAuth = require('../utils/auth');
-const sandiwichHelper = require('../utils/sandwichHelper');
+// const sandiwichHelper = require('../utils/sandwichHelper');
 
 router.get('/', async (req, res) => {
   try {
@@ -9,10 +9,10 @@ router.get('/', async (req, res) => {
       res.redirect('/dashboard');
     } else {
       // show the carousel if user is not logged in
-      const sandwichCarousel = await sandiwichHelper;
+      // const sandwichCarousel = await sandiwichHelper;
 
       res.render('homepage', {
-        sandwichCarousel,
+        // sandwichCarousel,
         logged_in: req.session.logged_in,
       });
     }
@@ -91,8 +91,7 @@ router.get('/sandwich', withAuth, async (req, res) => {
   const categories = categoryData.map((category) =>
     category.get({ plain: true })
   );
-  res.render('sandwich', { categories, logged_in: req.session.logged_in});
-
+  res.render('sandwich', { categories, logged_in: req.session.logged_in });
 });
 
 module.exports = router;

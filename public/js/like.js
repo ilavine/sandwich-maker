@@ -3,7 +3,6 @@ let clicked = false;
 let count = 0;
 
 const clickHandler = function () {
-  
   return function () {
     if (!clicked) {
       clicked = true;
