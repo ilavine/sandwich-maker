@@ -38,6 +38,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         sandwiches.get({ plain: true })
       );
 
+      // console.log(dbSandwichData);
       res.render('dashboard', {
         logged_in: req.session.logged_in,
         data: sandwiches,

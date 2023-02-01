@@ -6,7 +6,10 @@ router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
     let dbIngredientData = await Ingredients.findAll({
-   
+      // include: {
+      //   model: Ingredients,
+      //   attributes: ['id', 'name', 'category_id'],
+      // },
     });
     console.log(dbIngredientData);
     if (!dbIngredientData) {
@@ -21,13 +24,17 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
- 
+  // find one category by its `id` value
+  // be sure to include its associated Products
   try {
     let dbIngredientData = await Ingredients.findOne({
       where: {
         id: req.params.id,
       },
-    
+      // include: {
+      //   model: Ingredients,
+      //   attributes: ['id', 'name', 'category_name'],
+      // },
     });
 
     if (!dbIngredientData) {

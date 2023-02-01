@@ -14,7 +14,18 @@ const clickHandler = function () {
       count--;
       this.innerHTML = `<i class='fa-regular fa-heart'> </i> ${count}`;
     }
-
+    // const response = fetch('/api/sandwich/', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ likeCount: count }),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
+    // if (response.ok) {
+    //   document.location.reload();
+    // } else {
+    //   console.log(response);
+    // }
   };
 };
 
