@@ -1,3 +1,5 @@
+// endpoint for /sandiwch
+
 const { Sandwich, Ingredients, SandwichIngredients } = require('../../models');
 const router = require('express').Router();
 
@@ -25,13 +27,17 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
- 
+  // find one sandwich by its `id` value
+  // be sure to include its associated Products
   try {
     let dbSandwichData = await Sandwich.findOne({
       where: {
         id: req.params.id,
       },
-  
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
 
     if (!dbSandwichData) {
@@ -44,6 +50,47 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json({ message: 'Did not find those sandwiches :(' });
   }
 });
+
+// router.post('/', withAuth, async (req, res) => {
+//   // create a new sandwich
+//   try {
+//     let dbSandwichData = await Sandwich.create({
+//       user_id: req.session.user_id,
+//       name: req.body.name,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueOne,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueTwo,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueThree,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueFour,
+//     });
+//     await SandwichIngredients.create({
+//       sandwich_id: dbSandwichData.id,
+//       ingredient_id: req.body.valueFive,
+//     });
+//     await Sandwich.create({
+//       name: dbSandwichData.name,
+//     });
+//     if (!dbSandwichData) {
+//       return res.status(404).json({ message: 'Did not find those sandwiches' });
+//     } else {
+//       return res.json(dbSandwichData);
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ message: 'an error occured' });
+//   }
+// });
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -80,7 +127,7 @@ router.post('/', withAuth, async (req, res) => {
 
 // update sandwich - withAuth fx
 router.put('/:id', withAuth, async (req, res) => {
- 
+  // console.log(req.body, req.params.id);
   try {
     let updatedSandwich = await Sandwich.update(req.body, {
       where: {
@@ -99,7 +146,7 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 router.delete('/:id', withAuth, async (req, res) => {
-  
+  //console.log(req.body, req.params.id);
   try {
     const delSandwich = await Sandwich.destroy({
       where: {

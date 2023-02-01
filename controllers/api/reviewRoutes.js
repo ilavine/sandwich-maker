@@ -6,7 +6,10 @@ router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
     let dbReviewData = await Review.findAll({
-   
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
     if (!dbReviewData) {
       return res.status(404).json({ message: 'Did not find those categories' });
@@ -20,13 +23,17 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
- 
+  // find one category by its `id` value
+  // be sure to include its associated Products
   try {
     let dbReviewData = await Review.findOne({
       where: {
         id: req.params.id,
       },
-  
+      // include: {
+      //   model: Product,
+      //   attributes: ['id', 'name'],
+      // },
     });
     if (!dbReviewData) {
       return res.status(404).json({ message: 'Did not find those categories' });
