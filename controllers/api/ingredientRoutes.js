@@ -5,12 +5,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   // find all ingredients
   try {
-    let dbIngredientData = await Ingredients.findAll({
-      // include: {
-      //   model: Ingredients,
-      //   attributes: ['id', 'name', 'category_id'],
-      // },
-    });
+    let dbIngredientData = await Ingredients.findAll({});
     console.log(dbIngredientData);
     if (!dbIngredientData) {
       return res.status(404).json({ message: 'Did not find those categories' });
@@ -24,17 +19,11 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
   try {
     let dbIngredientData = await Ingredients.findOne({
       where: {
         id: req.params.id,
       },
-      // include: {
-      //   model: Ingredients,
-      //   attributes: ['id', 'name', 'category_name'],
-      // },
     });
 
     if (!dbIngredientData) {
@@ -70,7 +59,6 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 router.put('/:id', withAuth, async (req, res) => {
-  //update category
   try {
     let updatedIngredients = await Ingredients.update(req.body, {
       where: {
